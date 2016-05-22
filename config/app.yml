@@ -55,6 +55,7 @@ development:
     use_logging: true
     logging_url: 'http://google.com'
     
+  public_path: "/"
   inject_polyfills: false
   use_hash_in_js_filenames: false
   use_hot_reload: true
@@ -71,6 +72,7 @@ production:
     use_logging: true
     logging_url: 'http://google.com'
 
+  public_path: "./"
   inject_polyfills: true
   minimize_js: true
   generate_compressed_files: true
