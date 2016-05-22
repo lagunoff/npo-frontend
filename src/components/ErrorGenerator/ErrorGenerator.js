@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 import color from 'color';
+import * as colors from 'material-ui/styles/colors';
 
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
@@ -98,12 +99,18 @@ class ErrorGenerator extends React.Component {
         color: color(palette.textColor).alpha(0.54).rgbString(),
         display: 'block',
       },
+      error: {
+        fontSize: 13,
+        lineHeight: '24px',
+        color: colors.red700,
+      },
     };    
   }
   
   render() {
     const styles = this.getStyles();
     const snackbarMessage = this.state.caughtError ? `Произошла ошибка: ${this.state.caughtError.constructor.name}` : '';
+    const fromFilesystem = location.protocol === 'file:';
     return (
       <div style={styles.root}>
         <p style={styles.text}>
@@ -144,8 +151,9 @@ class ErrorGenerator extends React.Component {
           />
         </RadioButtonGroup>
         <div style={styles.buttonWrapper}>
+          {fromFilesystem && <p style={styles.error}>Отправка отчета возможна только со страницы, загруженной с веб домена</p>}
           <RaisedButton
-            disabled={!this.state.loggingUrl.length}
+            disabled={fromFilesystem || !this.state.loggingUrl.length}
             label="Генерировать ошибку"
             secondary={true}
             onTouchTap={this._generateError}
