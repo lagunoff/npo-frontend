@@ -10,6 +10,9 @@ defaults: &defaults
     # url для отправки post запроса (необходимо настроить CORS политику)
     logging_url: 'http://google.com'
 
+    # ссылка на репозиторий
+    github_url: 'https://github.com/lagunoff/npo-frontend'
+
   # если установлен в true в сборку будут добавлены полифилы для старых
   # браузеров
   inject_polyfills: true
