@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+}
+
+body, body * {
+    font-family: Roboto, serif;
+}
+
+body {
+    font-size: 16px;
+    overflow-x: hidden;
+}

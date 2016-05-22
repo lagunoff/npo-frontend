@@ -1,0 +1,75 @@
+%YAML 1.2
+---
+defaults: &defaults
+  # эти настройки будут доступны на клиенте в переменной __CONFIG__
+  client: &client
+
+    # если установлен, будет включено логгирование ошибок на сервер
+    use_logging: false
+
+    # url для отправки post запроса (необходимо настроить CORS политику)
+    logging_url: './'
+
+  # если установлен в true в сборку будут добавлены полифилы для старых
+  # браузеров
+  inject_polyfills: true
+
+  # если установлен, имена js-файлов будут содержать хэш сумму файла
+  use_hash_in_js_filenames: true
+
+  # url директории с ресурсами
+  public_path: "/"
+
+  # использовать hot reload фичи
+  use_hot_reload: false
+
+  # минифицировать js
+  minimize_js: false
+
+  # если установлен, имена статических файлов будут содержать хэш сумму файла
+  use_hash_in_static_filenames: true
+
+  # добавить debug код в сборку React.js (через process.env.NODE_ENV)
+  debug_reactjs: false
+
+  # будут созданы *.gz файлы для собранных файлов
+  generate_compressed_files: false
+
+  # source-map, etc https://webpack.github.io/docs/configuration.html#devtool
+  webpack_devtool: null
+
+  # если установлен, webpack будет пытаться удалять дублируемые модули
+  enable_dedup: false
+
+
+# ----------------------------------------------------------------------------
+# Версия для разработки на локальной машине
+# ----------------------------------------------------------------------------
+development:
+  <<: *defaults
+  client:
+    <<: *client
+    use_logging: true
+    logging_url: './'
+    
+  inject_polyfills: false
+  use_hash_in_js_filenames: false
+  use_hot_reload: true
+  debug_reactjs: true
+  webpack_devtool: 'source-map'
+
+# ----------------------------------------------------------------------------
+# Для продакшн-сервера
+# ----------------------------------------------------------------------------
+production:
+  <<: *defaults
+  client:
+    <<: *client
+    use_logging: true
+    logging_url: './'
+
+  inject_polyfills: true
+  minimize_js: true
+  generate_compressed_files: true
+  webpack_devtool: 'source-map'
+  enable_dedup: true

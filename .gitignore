@@ -1,0 +1,15 @@
+/public/**
+/log/**
+!/public/.keep
+/lib/**
+!/lib/.keep
+/tmp/**
+!/tmp/.keep
+**/.#*
+/node_modules/**
+!/node_modules/.keep
+**/*~
+**/*.kate-swp
+.directory
+/npm-debug.log
+/.dir-locals.el
