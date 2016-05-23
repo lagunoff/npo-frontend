@@ -37,11 +37,12 @@ class SubmenuAnimation extends React.Component {
       overflow: 'hidden',
       position: 'relative',
       transition: transitions.create('450ms', null, null, transitions.easeOutFunction),
+      ...this.props.styles,
     };
   }
 
   render() {
-    const rootStyles = Object.assign({}, this.getStyles(), this.props.styles);
+    const rootStyles = this.getStyles();
     return (
       <div style={rootStyles}>{this.props.children}</div>
     );

@@ -219,7 +219,7 @@ class Menu extends React.Component {
     return (
       <div style={styles.root}>
         <div style={styles.header}>
-          <img style={styles.logo} src={logo}/>
+          <img style={styles.logo} src={logo} alt="Logo"/>
         </div>
         <Divider/>
         <List>

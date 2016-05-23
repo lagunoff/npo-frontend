@@ -27,6 +27,7 @@ injectTapEventPlugin();
 const firstFloorId = floors[0].id;
 const firstFloorRedirectPath = `/floors/${firstFloorId}`;
 
+// рендеринг интерфейса
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>

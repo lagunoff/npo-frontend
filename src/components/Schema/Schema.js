@@ -21,6 +21,7 @@ class Schema extends React.Component {
     onRoomMouseLeave: React.PropTypes.func,
   };
   
+  // список SVG элементов, к которым подцеплены события
   _targets = [];
   
   componentDidMount() {
@@ -33,6 +34,7 @@ class Schema extends React.Component {
   
   componentWillReceiveProps(newProps) {
     if (newProps.highlightedRoom !== this.props.highlightedRoom) {
+      // сменилась подсвечиваемая комната
       const svgWrapperElement = ReactDOM.findDOMNode(this.refs.svgWrapper);
       const svgElement = svgWrapperElement.querySelector('svg');
       if (this.props.highlightedRoom) {
@@ -41,12 +43,16 @@ class Schema extends React.Component {
         currentlySelectedElement && (currentlySelectedElement.style.opacity = 0);
       }
       if (newProps.highlightedRoom) {
+        // отображаем активный елемент
         const newlySelectedElement = svgElement.querySelector(`#roomid-${newProps.highlightedRoom}`);
         newlySelectedElement && (newlySelectedElement.style.opacity = 1);
       }
     }
   }
-
+  
+  /**
+   * Подключение событий к SVG фигурам комнат
+   */
   _connectCallbacksOnShapes() {
     const svgWrapperElement = ReactDOM.findDOMNode(this.refs.svgWrapper);
     const svgElement = svgWrapperElement.querySelector('svg');
@@ -61,6 +67,9 @@ class Schema extends React.Component {
     });
   }
 
+  /**
+   * Отключение событий
+   */
   _disconnectCallbacksFromShapes() {
     for (let target of this._targets) {
       target.removeEventListener('mouseenter', this._handleRoomMouseEnter);
