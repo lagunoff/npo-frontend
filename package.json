@@ -9,8 +9,8 @@
     "exec": "exec",
     "build": "rm -rf ./public/* && webpack --progress --config=./config/webpack.config.js",
     "dev": "webpack-dev-server --config=./config/webpack.config.js",
-    "test": "mocha",
-    "lint": "eslint --ext .js src config test"
+    "test": "mocha --compilers js:babel-core/register $(find src -name '*.spec.js')",
+    "lint": "eslint --ext .js src config"
   },
   "author": "Vladislav Lagunov <lv.sigsegv@gmail.com>",
   "license": "ISC",

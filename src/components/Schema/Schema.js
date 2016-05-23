@@ -122,6 +122,5 @@ class Schema extends React.Component {
     );
   }
 }
-//       <Camera style={styles.camera}/>
 
 export default Schema;
