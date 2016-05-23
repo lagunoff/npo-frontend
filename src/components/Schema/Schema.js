@@ -26,6 +26,13 @@ class Schema extends React.Component {
   
   componentDidMount() {
     this._connectCallbacksOnShapes();
+
+    if (this.props.highlightedRoom) {
+      // подсвечивание активного элемента если он задан в параметрах
+      const svgWrapperElement = ReactDOM.findDOMNode(this.refs.svgWrapper);
+      const highlightedShape = svgWrapperElement.querySelector(`#roomid-${this.props.highlightedRoom}`);
+      highlightedShape && (highlightedShape.style.opacity = 1);
+    }
   }
 
   componentWillUnmount() {
@@ -36,16 +43,15 @@ class Schema extends React.Component {
     if (newProps.highlightedRoom !== this.props.highlightedRoom) {
       // сменилась подсвечиваемая комната
       const svgWrapperElement = ReactDOM.findDOMNode(this.refs.svgWrapper);
-      const svgElement = svgWrapperElement.querySelector('svg');
       if (this.props.highlightedRoom) {
         // скрываем активный елемент, если он существует
-        const currentlySelectedElement = svgElement.querySelector(`#roomid-${this.props.highlightedRoom}`);
-        currentlySelectedElement && (currentlySelectedElement.style.opacity = 0);
+        const currentlyHighlightedShape = svgWrapperElement.querySelector(`#roomid-${this.props.highlightedRoom}`);
+        currentlyHighlightedShape && (currentlyHighlightedShape.style.opacity = 0);
       }
       if (newProps.highlightedRoom) {
         // отображаем активный елемент
-        const newlySelectedElement = svgElement.querySelector(`#roomid-${newProps.highlightedRoom}`);
-        newlySelectedElement && (newlySelectedElement.style.opacity = 1);
+        const newlyHighlightedShape = svgWrapperElement.querySelector(`#roomid-${newProps.highlightedRoom}`);
+        newlyHighlightedShape && (newlyHighlightedShape.style.opacity = 1);
       }
     }
   }
