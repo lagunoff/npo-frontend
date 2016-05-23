@@ -104,6 +104,9 @@ class ErrorGenerator extends React.Component {
         lineHeight: '24px',
         color: colors.red700,
       },
+      snackbar: {
+        marginLeft: 220,
+      },
     };    
   }
   
@@ -160,6 +163,7 @@ class ErrorGenerator extends React.Component {
           />
         </div>
         <Snackbar
+          style={styles.snackbar}
           open={this.state.showSnackbar}
           message={snackbarMessage}
           autoHideDuration={4000}
