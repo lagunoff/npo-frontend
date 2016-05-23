@@ -12,7 +12,7 @@ class ErrorGenerator extends React.Component {
 
   static propTypes = {
     // стили
-    style: React.PropTypes.node.isRequired,
+    style: React.PropTypes.object.isRequired,
   };
 
   static contextTypes = {

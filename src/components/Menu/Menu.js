@@ -62,12 +62,10 @@ class Menu extends React.Component {
   };
 
   _handleRoomMouseEnter = (roomId) => {
-    console.debug(this);
     this.props.onRoomMouseEnter && this.props.onRoomMouseEnter(roomId);
   };
 
   _handleRoomMouseLeave = (roomId) => {
-    console.debug(this);
     this.props.onRoomMouseLeave && this.props.onRoomMouseLeave(roomId);
   };
 
